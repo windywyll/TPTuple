@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Map.Entry;
 
 public class TuplePattern {
-	private LinkedList<Pair<Object,TupleType>> pattern;
+	private LinkedList<TupleData> pattern;
 	
 	public int size() {
 		return pattern.size();
@@ -13,19 +13,23 @@ public class TuplePattern {
 	public boolean match(Tuple tuple)	{
 		if(tuple.size() != this.size())
 			return false;
-		for(Pair p : tuple.getData())
+		for(TupleData p : tuple.getData())
+		{
+			
+		}
+		return true;
 	}
 
-	public TuplePattern(LinkedList<Pair<Object,TupleType>> pattern)
+	public TuplePattern(LinkedList<TupleData> pattern)
 	{
 		this.pattern = pattern;
 	}
 
-	public LinkedList<Pair<Object, TupleType>> getPattern() {
+	public LinkedList<TupleData> getPattern() {
 		return pattern;
 	}
 
-	public void setPattern(LinkedList<Pair<Object, TupleType>> pattern) {
+	public void setPattern(LinkedList<TupleData> pattern) {
 		this.pattern = pattern;
 	}
 	
