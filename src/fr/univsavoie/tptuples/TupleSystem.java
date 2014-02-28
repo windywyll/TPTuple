@@ -56,9 +56,49 @@ public final class TupleSystem {
 		}
 	}
 	
+	public Tuple in_impl (TuplePattern pattern) {
+		Iterator<Tuple> it = TupleSpace.iterator();
+		while (true) {
+			while (reading)
+			{};
+			reading = true;
+			if(it.hasNext()){
+				
+				Tuple tp = it.next();
+				if(pattern.match(tp)) {
+						it.remove();
+						return tp;
+				}
+			} else {
+				reading = false;
+				break;
+			}
+			reading = false;
+		}
+		return null;
+	}
+	
+	public Tuple rd_impl (TuplePattern pattern){
+		Iterator<Tuple> it = TupleSpace.iterator();
+		while (true) {
+			while (reading)
+			{};
+			reading = true;
+			if(it.hasNext()) {
+				Tuple tp = it.next();
+				if(pattern.match(tp)) {
+						return tp;
+				}
+			} else {
+				reading = false;
+				break;
+			}
+			reading = false;
+		}
+		return null;
+	}
+	
 	public void out (Tuple tuple) {
 		TupleSpace.add(tuple);
 	}
-	
-	
 }
