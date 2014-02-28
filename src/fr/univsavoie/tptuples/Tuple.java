@@ -5,36 +5,30 @@ import java.util.Map.Entry;
 
 public class Tuple {
 	
-	private LinkedList<Entry<Object,TupleType>> data;
+	private LinkedList<Pair<Object,TupleType>> data;
 	
 	public int size() {
 		return data.size();
 	}
 
-	public Tuple (LinkedList<Entry<Object,TupleType>> data) {
+	public Tuple (LinkedList<Pair<Object,TupleType>> data) {
 		this.data = data;
 	}
-	
-	public boolean match(TuplePattern pattern)	{
-		if(pattern.size() != this.size())
-			return false;
-		while()
-	}
 
-	public LinkedList<Entry<Object, TupleType>> getData() {
+	public LinkedList<Pair<Object, TupleType>> getData() {
 		return data;
 	}
 
-	public void setData(LinkedList<Entry<Object, TupleType>> data) {
+	public void setData(LinkedList<Pair<Object, TupleType>> data) {
 		this.data = data;
 	}
 
 	@Override
 	public String toString() {
 		String str = "Tuple [";
-		for(Entry<Object,TupleType> entry : data){
-			str += " "+entry.getKey();
-			switch(entry.getValue())
+		for(Pair<Object,TupleType> p : data){
+			str += " "+p.getFirst();
+			switch(p.getSecond())
 			{
 			case STRING :
 				str +=", string;";
