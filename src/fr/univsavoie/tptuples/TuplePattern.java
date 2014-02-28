@@ -1,7 +1,7 @@
 package fr.univsavoie.tptuples;
 
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map.Entry;
 
 public class TuplePattern {
 	private LinkedList<TupleData> pattern;
@@ -13,9 +13,11 @@ public class TuplePattern {
 	public boolean match(Tuple tuple)	{
 		if(tuple.size() != this.size())
 			return false;
+		Iterator<TupleData> it = this.pattern.iterator();
 		for(TupleData p : tuple.getData())
 		{
-			
+			if(!p.match(it.next()))
+				return false;
 		}
 		return true;
 	}
