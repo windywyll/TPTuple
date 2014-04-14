@@ -1,7 +1,6 @@
 package fr.univsavoie.tptuples;
 
 import java.util.LinkedList;
-import java.util.Map.Entry;
 
 public class Tuple {
 	
@@ -43,7 +42,7 @@ public class Tuple {
 				break;
 			}
 		}
-		str = str.substring(0, str.length()-2);
+		str = str.substring(0, str.length()-1);
 		str += "]";
 		return str;
 	}
