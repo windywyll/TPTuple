@@ -79,13 +79,6 @@ public class Plant_product {
 				tupleOut = new Tuple(infosTuple);
 				
 				ts.out(tupleOut);
-				
-				infosTuple = new LinkedList<TupleData>();
-				infosTuple.add(new TupleData("production_finished", TupleType.STRING));
-				infosTuple.add(new TupleData(id, TupleType.INTEGER));
-				tupleOut = new Tuple(infosTuple);
-				
-				ts.out(tupleOut);
 			}
 		}
 	}
