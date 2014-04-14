@@ -29,7 +29,7 @@ public class Plant_product {
 		infosTuplePattern.add(new TupleData(id, TupleType.INTEGER));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn

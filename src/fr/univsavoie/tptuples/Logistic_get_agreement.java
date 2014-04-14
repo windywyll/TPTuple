@@ -31,7 +31,7 @@ public class Logistic_get_agreement extends Thread{
 		infosTuplePattern.add(new TupleData(true));
 		patternIn2 = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn

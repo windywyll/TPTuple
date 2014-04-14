@@ -19,7 +19,7 @@ public class customer_get_counter_offer_transporter {
 		infosTuplePattern.add(new TupleData(true));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn
@@ -31,6 +31,14 @@ public class customer_get_counter_offer_transporter {
 				choice = true;
 			
 			if(choice){
+				
+				infosTuplePattern = new LinkedList<TupleData>();
+				infosTuplePattern.add(new TupleData("transporter_offer", TupleType.STRING));
+				infosTuplePattern.add(new TupleData(true));
+				infosTuplePattern.add(new TupleData(true));
+				patternIn = new TuplePattern(infosTuplePattern);
+				
+				ts.in(patternIn);
 			
 				//compute somethings;
 				LinkedList<TupleData> readData = readTuple.getData();
@@ -39,7 +47,7 @@ public class customer_get_counter_offer_transporter {
 				
 				//construction tupleOut
 				infosTuple = new LinkedList<TupleData>();
-				infosTuple.add(new TupleData("accept_transporter_offer", TupleType.STRING));
+				infosTuple.add(new TupleData("get_product_from_plant", TupleType.STRING));
 				infosTuple.add(new TupleData(cost, TupleType.FLOAT));
 				infosTuple.add(new TupleData(time, TupleType.INTEGER));
 				infosTuple.add(new TupleData( (int) readData.get(4).getData() , TupleType.INTEGER));

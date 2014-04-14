@@ -24,7 +24,7 @@ public class Logistics_get_needs extends Thread{
 		infosTuplePattern.add(new TupleData(true));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn

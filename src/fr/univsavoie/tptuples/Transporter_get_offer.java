@@ -25,7 +25,7 @@ int id;
 		infosTuplePattern.add(new TupleData(true));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn

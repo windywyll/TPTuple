@@ -25,7 +25,7 @@ public class Supplier_get_offer {
 		infosTuplePattern.add(new TupleData(true));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		TupleSystem ts = new TupleSystem();
+		TupleSystem ts = TupleSystem.getInstance();
 		
 		while(true){
 			//construction patternIn
