@@ -44,12 +44,21 @@ public class Transporter_get_product_from_plant extends Thread{
 			//construction tupleOut
 			infosTuple = new LinkedList<TupleData>();
 			infosTuple.add(new TupleData("final_product", TupleType.STRING));
-			infosTuple.add(readData.get(2));
+			infosTuple.add(readData.get(1));
 			infosTuple.add(new TupleData("warehouse", TupleType.STRING));
 			infosTuple.add(new TupleData(plant_id, TupleType.INTEGER));
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
+			
+			System.out.println("transporter items acheminés à warehouse");
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

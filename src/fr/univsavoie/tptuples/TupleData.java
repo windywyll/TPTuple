@@ -45,7 +45,7 @@ public class TupleData {
     }
     
     public boolean match(TupleData tupleData){
-    	if (query || tupleData.isQuery())
+    	if (query)
     		return true;
     	if(this.equals(tupleData))
     		return true;

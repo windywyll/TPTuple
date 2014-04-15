@@ -44,8 +44,8 @@ public class Plant_product extends Thread{
 			
 			timeS = timeE;
 			
-			int quantity = (int) readData.get(2).getData();
-			float productTime = (float) readData.get(3).getData();
+			int quantity = (int) readData.get(1).getData();
+			float productTime = (float) readData.get(2).getData();
 			int quantityProduced = (int) (diffTime/productTime);
 			
 			if( (quantity - quantityProduced) > 0){
@@ -67,6 +67,8 @@ public class Plant_product extends Thread{
 				tupleOut = new Tuple(infosTuple);
 				
 				ts.out(tupleOut);
+				
+				System.out.println("plant a produit des items");
 			}
 			else
 			{
@@ -79,6 +81,15 @@ public class Plant_product extends Thread{
 				tupleOut = new Tuple(infosTuple);
 				
 				ts.out(tupleOut);
+				
+				System.out.println("plant a fini de produire les items");
+			}
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

@@ -40,12 +40,21 @@ public class Plant_start_production extends Thread{
 			//construction tupleOut
 			infosTuple = new LinkedList<TupleData>();
 			infosTuple.add(new TupleData("plant_product", TupleType.STRING));
-			infosTuple.add(readData.get(5));
 			infosTuple.add(readData.get(4));
+			infosTuple.add(readData.get(3));
 			infosTuple.add(new TupleData(id, TupleType.INTEGER));
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
+			
+			System.out.println("plant commence production");
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

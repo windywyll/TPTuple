@@ -50,14 +50,26 @@ public class Customer_get_counter_offer extends Thread {
 				//construction tupleOut
 				infosTuple = new LinkedList<TupleData>();
 				infosTuple.add(new TupleData("accept_offer", TupleType.STRING));
+				infosTuple.add(readData.get(1));
 				infosTuple.add(readData.get(2));
 				infosTuple.add(readData.get(3));
 				infosTuple.add(readData.get(4));
 				infosTuple.add(readData.get(5));
-				infosTuple.add(readData.get(6));
 				tupleOut = new Tuple(infosTuple);
 				
 				ts.out(tupleOut);
+				
+				System.out.println("plant accepté");
+			}
+			else{
+				System.out.println("plant refusé");
+			}
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

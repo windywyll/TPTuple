@@ -44,16 +44,16 @@ public class Logistic_get_agreement extends Thread{
 			//construction tupleOut
 			infosTuple = new LinkedList<TupleData>();
 			infosTuple.add(new TupleData("start_production", TupleType.STRING));
+			infosTuple.add(readData.get(1));
 			infosTuple.add(readData.get(2));
 			infosTuple.add(readData.get(3));
 			infosTuple.add(readData.get(4));
 			infosTuple.add(readData.get(5));
-			infosTuple.add(readData.get(6));
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
 			
-			float cost = (float) readData.get(3).getData();
+			float cost = (float) readData.get(2).getData();
 			
 			float cost_transport = cost - rng.nextFloat()*500+1;
 			if(cost_transport <= 0)
@@ -86,6 +86,15 @@ public class Logistic_get_agreement extends Thread{
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
+			
+			System.out.println("logistic lance deux offres: supplier et transporter");
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

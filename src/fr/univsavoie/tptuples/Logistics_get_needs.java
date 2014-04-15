@@ -29,6 +29,7 @@ public class Logistics_get_needs extends Thread{
 		while(true){
 			//construction patternIn
 			readTuple = ts.in(patternIn);
+			LinkedList<TupleData> readData = readTuple.getData();
 			
 			//compute somethings;
 			
@@ -38,10 +39,19 @@ public class Logistics_get_needs extends Thread{
 			infosTuple.add(new TupleData("requirement", TupleType.STRING));
 			infosTuple.add(new TupleData(rng.nextFloat()*1000+1, TupleType.FLOAT));
 			infosTuple.add(new TupleData(rng.nextInt(10)+1, TupleType.INTEGER));
-			infosTuple.add(new TupleData(rng.nextInt(1000)+1, TupleType.INTEGER));
+			infosTuple.add(readData.get(1));
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
+			
+			System.out.println("logistic appel d'offre plant");
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

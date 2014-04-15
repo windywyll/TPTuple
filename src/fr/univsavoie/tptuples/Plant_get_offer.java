@@ -36,9 +36,9 @@ public class Plant_get_offer extends Thread {
 			
 			//compute somethings;
 			LinkedList<TupleData> readData = readTuple.getData();
-			float cost = (float) readData.get(3).getData();
-			int time = (int) readData.get(4).getData();
-			int quantity = (int) readData.get(5).getData();
+			float cost = (float) readData.get(2).getData();
+			int time = (int) readData.get(3).getData();
+			int quantity = (int) readData.get(4).getData();
 			
 			//construction tupleOut
 			infosTuple = new LinkedList<TupleData>();
@@ -51,6 +51,15 @@ public class Plant_get_offer extends Thread {
 			tupleOut = new Tuple(infosTuple);
 			
 			ts.out(tupleOut);
+			
+			System.out.println("plant contre offre");
+			
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

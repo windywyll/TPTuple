@@ -14,6 +14,7 @@ public final class TupleSystem {
 	private static final TupleSystem instance = new TupleSystem();
 	
 	private TupleObservator observer;
+	public static final int SLEEP = 1000;
 	
 	public static TupleSystem getInstance(){
 		return TupleSystem.instance;
@@ -62,6 +63,12 @@ public final class TupleSystem {
 				}
 			}
 			reading = false;
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -78,6 +85,12 @@ public final class TupleSystem {
 				}
 			}
 			reading = false;
+			try {
+				Thread.sleep(TupleSystem.SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -137,18 +150,11 @@ public final class TupleSystem {
 	}
 	
 	public static void main (String args[]) throws InterruptedException
-	{
-		TupleSystem ts = TupleSystem.getInstance();
-		
+	{		
 		TupleObservator fenetre = new TupleObservator();
 		fenetre.setVisible(true);
-		LinkedList<TupleData> td = new LinkedList<TupleData>();
-		td.add(new TupleData("testeuh", TupleType.STRING));
-		td.add(new TupleData(435, TupleType.INTEGER));
-		Thread.sleep(1000);
-		ts.out(new Tuple(td));
-		Thread.sleep(2000);
-		ts.in(new TuplePattern(td));
+		Agent_System as = new Agent_System();
+		as.start();
 	}
 
 	public TupleObservator getObserver() {
