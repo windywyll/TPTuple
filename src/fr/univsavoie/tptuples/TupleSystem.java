@@ -1,18 +1,19 @@
 package fr.univsavoie.tptuples;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Vector;
 
-public final class TupleSystem extends Observable {
+public final class TupleSystem {
 	
 	////////////////
 	//STATIC MEMBERS
 	////////////////
 	
 	private static final TupleSystem instance = new TupleSystem();
+	
+	private TupleObservator observer;
 	
 	public static TupleSystem getInstance(){
 		return TupleSystem.instance;
@@ -55,8 +56,8 @@ public final class TupleSystem extends Observable {
 				if(pattern.match(tp)) {
 						DeletedTuple.add(tp);
 						it.remove();
-						setChanged();
-						notifyObservers();
+						if(observer != null)
+							observer.updateData();
 						return tp;
 				}
 			}
@@ -92,8 +93,8 @@ public final class TupleSystem extends Observable {
 				if(pattern.match(tp)) {
 						DeletedTuple.add(tp);
 						it.remove();
-						setChanged();
-						notifyObservers();
+						if(observer != null)
+							observer.updateData();
 						return tp;
 				}
 			} else {
@@ -127,8 +128,8 @@ public final class TupleSystem extends Observable {
 	
 	public void out (Tuple tuple) {
 		TupleSpace.add(tuple);
-		setChanged();
-		notifyObservers();
+		if(observer != null)
+			observer.updateData();
 	}
 	
 	public Vector<Tuple> getTupleSpace() {
@@ -141,13 +142,21 @@ public final class TupleSystem extends Observable {
 		
 		TupleObservator fenetre = new TupleObservator();
 		fenetre.setVisible(true);
-		System.out.println("here");
 		LinkedList<TupleData> td = new LinkedList<TupleData>();
 		td.add(new TupleData("testeuh", TupleType.STRING));
 		td.add(new TupleData(435, TupleType.INTEGER));
+		Thread.sleep(1000);
 		ts.out(new Tuple(td));
+		Thread.sleep(2000);
 		ts.in(new TuplePattern(td));
-		System.out.println("here");
+	}
+
+	public TupleObservator getObserver() {
+		return observer;
+	}
+
+	public void setObserver(TupleObservator observer) {
+		this.observer = observer;
 	}
 
 }
