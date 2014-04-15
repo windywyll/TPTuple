@@ -7,36 +7,29 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
-public class TupleObservator extends JFrame implements Observer {
+public class TupleObservator extends JFrame{
 	
-	JList<Tuple> currentTuples, lastDeletedTuples;
+	JList<Tuple> currentTuples;
 	
 	TupleObservator() {
 		super();
-		this.setSize(800, 600);
+		this.setSize(400, 600);
 		
 		currentTuples = new JList<Tuple>();
 		currentTuples.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		currentTuples.setVisibleRowCount(-1);
 		
-		lastDeletedTuples = new JList<Tuple>();
-		lastDeletedTuples.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		lastDeletedTuples.setVisibleRowCount(-1);
-		
-		JScrollPane currentPanel = new JScrollPane(currentTuples), deletedPanel = new JScrollPane(lastDeletedTuples);
+		JScrollPane currentPanel = new JScrollPane(currentTuples);
 		currentPanel.setBounds(0,0,400,600);
-		deletedPanel.setBounds(400,0,400,600);
 		
 		this.add(currentPanel);
-		this.add(deletedPanel);
-		TupleSystem.getInstance().addObserver(this);
+		TupleSystem.getInstance().setObserver(this);
 	}
 	
-	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void updateData() {
 		TupleSystem ts = TupleSystem.getInstance();
 		currentTuples.setListData(ts.getTupleSpace());
-		lastDeletedTuples.setListData(ts.getDeletedTuple());
+		this.update(this.getGraphics());
 	}
 
 }
