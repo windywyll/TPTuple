@@ -2,7 +2,7 @@ package fr.univsavoie.tptuples;
 
 import java.util.LinkedList;
 
-public class Transporter_get_product_from_warehouse {
+public class Transporter_get_product_from_warehouse extends Thread{
 	int transport_id, plant_id;
 	
 	public Transporter_get_product_from_warehouse(int transporter_id, int plant_id){

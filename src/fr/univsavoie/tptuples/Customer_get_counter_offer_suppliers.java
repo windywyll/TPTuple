@@ -3,7 +3,7 @@ package fr.univsavoie.tptuples;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Customer_get_counter_offer_suppliers {	
+public class Customer_get_counter_offer_suppliers extends Thread{	
 	
 	public void run(){
 		TuplePattern patternIn;

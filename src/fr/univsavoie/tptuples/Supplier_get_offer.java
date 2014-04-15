@@ -3,7 +3,7 @@ package fr.univsavoie.tptuples;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Supplier_get_offer {
+public class Supplier_get_offer extends Thread{
 	int id;
 	
 	public Supplier_get_offer(int supplier_id){

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Plant_product {
+public class Plant_product extends Thread{
 	
 	int id;
 	long timeS;
