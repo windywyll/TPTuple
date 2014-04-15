@@ -11,7 +11,7 @@ public class Transporter_get_product_from_warehouse {
 	}
 	
 	public void run(){
-		TuplePattern patternIn, patternInImpl, patternRd;
+		TuplePattern patternIn, patternRd;
 		Tuple readTuple;
 		LinkedList<TupleData> infosTuple;
 		LinkedList<TupleData> infosTuplePattern;
@@ -30,11 +30,6 @@ public class Transporter_get_product_from_warehouse {
 		infosTuplePattern.add(new TupleData("warehouse", TupleType.STRING));
 		infosTuplePattern.add(new TupleData(plant_id, TupleType.INTEGER));
 		patternIn = new TuplePattern(infosTuplePattern);
-		
-		infosTuplePattern = new LinkedList<TupleData>();
-		infosTuplePattern.add(new TupleData("production_finished", TupleType.STRING));
-		infosTuplePattern.add(new TupleData(plant_id, TupleType.INTEGER));
-		patternInImpl = new TuplePattern(infosTuplePattern);
 		
 		TupleSystem ts = TupleSystem.getInstance();
 		

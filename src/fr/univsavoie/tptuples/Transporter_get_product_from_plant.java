@@ -12,11 +12,10 @@ public class Transporter_get_product_from_plant {
 	
 	public void run(){
 		TuplePattern patternIn, patternInImpl, patternRd;
-		Tuple readTuple;
+		Tuple readTuple, implTuple;
 		LinkedList<TupleData> infosTuple;
 		LinkedList<TupleData> infosTuplePattern;
 		Tuple tupleOut;
-		boolean run = true;
 		
 		infosTuplePattern = new LinkedList<TupleData>();
 		infosTuplePattern.add(new TupleData("get_product_from_plant", TupleType.STRING));
@@ -32,14 +31,9 @@ public class Transporter_get_product_from_plant {
 		infosTuplePattern.add(new TupleData(plant_id, TupleType.INTEGER));
 		patternIn = new TuplePattern(infosTuplePattern);
 		
-		infosTuplePattern = new LinkedList<TupleData>();
-		infosTuplePattern.add(new TupleData("production_finished", TupleType.STRING));
-		infosTuplePattern.add(new TupleData(plant_id, TupleType.INTEGER));
-		patternInImpl = new TuplePattern(infosTuplePattern);
-		
 		TupleSystem ts = TupleSystem.getInstance();
 		
-		while(run){
+		while(true){
 			//construction patternIn
 			ts.rd(patternRd);
 			readTuple = ts.in(patternIn);
